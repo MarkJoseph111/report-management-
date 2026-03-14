@@ -1,10 +1,10 @@
 <?php
 
 
-$host = "localhost";
+$host = "turntable.proxy.rlwy.net";
 $user = "root";
 $password = "";
-$database = "ars_db"; // updated to use ARS database
+$database = "railway"; // updated to use ARS database
 
 $conn = new mysqli($host, $user, $password, $database);
 
