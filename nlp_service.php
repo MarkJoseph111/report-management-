@@ -12,7 +12,7 @@ class NLPService {
 public function __construct($db, $nlp_api_url = null, $nlp_enabled = true) {
         global $NLP_API_URL;
         $this->db = $db;
-        $this->nlp_api_url = $nlp_api_url ?? $NLP_API_URL ?? 'http://localhost:5000/analyze';
+        $this->nlp_api_url = $nlp_api_url ?? $NLP_API_URL ?? 'https://ars-production-6b17.up.railway.app/analyze';
         $this->nlp_enabled = $nlp_enabled;
         $this->db = $db;
         $this->nlp_api_url = $nlp_api_url;
