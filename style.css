@@ -2811,6 +2811,7 @@ body.dark-mode .priority-select:focus {
   }
 }
 
+
 /* ================================================
    NOTIFICATION BELL BADGE
    ================================================ */
@@ -2845,184 +2846,11 @@ body.dark-mode .priority-select:focus {
 }
 body.dark-mode .notif-badge { border-color: #1a2535; }
 
-
 /* ================================================
-   NOTIFICATION CARDS — PRESENTABLE OVERHAUL
+   NOTIFICATION CARDS
    ================================================ */
-
-/* Unread highlight */
-.ncard-unread {
-    background: #fffdf5 !important;
-}
-body.dark-mode .ncard-unread { background: #1e2d1e !important; }
-
-/* Top-right group (priority badge + time) */
-.ncard-top-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-/* Priority badge pill */
-.ncard-priority-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 10px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-}
-
-/* Report ID badge */
-.ncard-id-badge {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 600;
-    color: #aab2bd;
-    background: #f0f4fb;
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-left: 8px;
-}
-body.dark-mode .ncard-id-badge { background: #243444; color: #4a6278; }
-
-/* Submitted time in footer */
-.ncard-submitted-time {
-    font-size: 12px;
-    color: #b2bec3;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Green action button variant */
-.ncard-action-green {
-    background: linear-gradient(135deg, #27ae60, #2ecc71) !important;
-}
-.ncard-action-green:hover {
-    box-shadow: 0 5px 14px rgba(39,174,96,0.4) !important;
-}
-
-
-/* ================================================
-   NOTIFICATION CARDS — ENHANCED
-   ================================================ */
-
-/* Unread highlight */
-.ncard-unread {
-    background: #fffbf0 !important;
-}
-body.dark-mode .ncard-unread { background: #1f2e1f !important; }
-
-/* Top-right badges area */
-.ncard-top-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 6px;
-    flex-shrink: 0;
-}
-
-/* Priority badge */
-.ncard-priority-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .4px;
-}
-
-/* Status badge */
-.ncard-status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: .4px;
-}
-
-/* Report ID badge */
-.ncard-id-badge {
-    font-size: 11px;
-    font-weight: 600;
-    color: #95a5a6;
-    margin-left: 8px;
-}
-
-/* Divider between header and content */
-.ncard-divider {
-    height: 1px;
-    background: #f0f4fb;
-    margin: 14px 0;
-}
-body.dark-mode .ncard-divider { background: #243444; }
-
-/* Meta info row at bottom of card */
-.ncard-meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    font-size: 12px;
-    color: #95a5a6;
-    margin-bottom: 14px;
-    padding: 10px 14px;
-    background: #f8f9fd;
-    border-radius: 10px;
-}
-.ncard-meta-row span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.ncard-meta-row strong { color: #2c3e50; }
-body.dark-mode .ncard-meta-row { background: #17232f; color: #4a6278; }
-body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
-
-/* Submitted time in footer */
-.ncard-submitted-time {
-    font-size: 12px;
-    color: #b2bec3;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-/* Green action button variant */
-.ncard-action-green {
-    background: linear-gradient(135deg, #27ae60, #2ecc71) !important;
-}
-.ncard-action-green:hover {
-    box-shadow: 0 5px 14px rgba(39,174,96,0.4) !important;
-}
-
-/* Make footer space-between when there's a submitted time */
-.ncard-footer {
-    justify-content: space-between;
-}
-
-
-/* ================================================
-   NOTIFICATION CARDS — REDESIGNED
-   ================================================ */
-
 .notif-page-wrap { max-width: 820px; width: 100%; margin: 0 auto; padding-bottom: 40px; }
 .notif-list { display: flex; flex-direction: column; gap: 14px; }
-
-/* Card base */
 .ncard {
     background: #fff;
     border-radius: 16px;
@@ -3037,16 +2865,9 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
     from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Unread card highlight */
-.ncard-unread { background: #fdfbff; border-left-width: 4px; }
-
+.ncard-unread { background: #fdfbff; }
 .ncard-inner { padding: 18px 20px 20px; }
-
-/* Header row */
 .ncard-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-
-/* Avatar */
 .ncard-avatar {
     width: 42px; height: 42px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -3055,8 +2876,6 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
 }
 .ncard-avatar-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
 .ncard-avatar-green  { background: linear-gradient(135deg, #059669, #10b981); }
-
-/* Pulse dot */
 .ncard-dot {
     position: absolute; top: -1px; right: -1px;
     width: 12px; height: 12px;
@@ -3067,16 +2886,10 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
     0%,100% { box-shadow: 0 0 0 0 rgba(244,63,94,0.5); }
     50%      { box-shadow: 0 0 0 5px rgba(244,63,94,0); }
 }
-
-/* Meta info beside avatar */
 .ncard-meta-info { flex: 1; }
 .ncard-name { font-size: 14px; font-weight: 700; color: #1e293b; }
 .ncard-sub  { font-size: 12px; color: #94a3b8; margin-top: 3px; display: flex; align-items: center; gap: 5px; }
-
-/* Right side of header */
 .ncard-head-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; flex-shrink: 0; }
-
-/* Priority badges */
 .ncard-badge {
     display: inline-flex; align-items: center; gap: 4px;
     padding: 3px 10px; border-radius: 20px;
@@ -3086,40 +2899,26 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
 .ncard-badge-high     { background: linear-gradient(135deg, #d97706, #b45309); }
 .ncard-badge-medium   { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
 .ncard-badge-low      { background: linear-gradient(135deg, #059669, #047857); }
-
-/* Status badges */
 .ncard-status-pending  { display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;background:#fef3c7;color:#92400e; }
 .ncard-status-progress { display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;background:#dbeafe;color:#1e40af; }
 .ncard-status-resolved { display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:700;background:#dcfce7;color:#14532d; }
-
 .ncard-time { font-size: 11px; color: #94a3b8; display: flex; align-items: center; gap: 4px; }
-
-/* Divider */
 .ncard-divider { height: 1px; background: #f1f5f9; margin: 14px 0; }
-
-/* Report / Reply sections */
 .ncard-section {
-    background: #f8fafc;
-    border-radius: 10px;
-    padding: 13px 15px;
-    margin-bottom: 10px;
+    background: #f8fafc; border-radius: 10px;
+    padding: 13px 15px; margin-bottom: 10px;
     border-left: 3px solid rgba(99,102,241,0.4);
 }
 .ncard-section-reply { border-left-color: rgba(16,185,129,0.5); background: rgba(16,185,129,0.04); }
-
 .ncard-section-label {
     font-size: 10px; font-weight: 700; color: #94a3b8;
     text-transform: uppercase; letter-spacing: .7px;
     margin-bottom: 7px; display: flex; align-items: center; gap: 5px;
 }
 .ncard-section-label-green { color: #10b981; }
-
 .ncard-id { font-size: 10px; color: #94a3b8; margin-left: 6px; font-weight: 500; }
-
 .ncard-report-title { font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 5px; }
 .ncard-report-body  { font-size: 13px; color: #64748b; line-height: 1.6; }
-
-/* Meta row */
 .ncard-meta-row {
     display: flex; flex-wrap: wrap; gap: 12px;
     font-size: 11px; color: #94a3b8;
@@ -3128,25 +2927,18 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
 }
 .ncard-meta-row span { display: flex; align-items: center; gap: 4px; }
 .ncard-meta-row strong { color: #475569; }
-
-/* ETA */
 .ncard-eta {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 12px; color: #d97706; font-weight: 600;
     background: rgba(251,191,36,0.1);
     padding: 6px 12px; border-radius: 8px; margin-bottom: 12px;
 }
-
-/* Footer */
 .ncard-footer {
     display: flex; align-items: center;
     justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid #f1f5f9;
+    padding-top: 12px; border-top: 1px solid #f1f5f9;
 }
 .ncard-footer-left { font-size: 11px; color: #94a3b8; display: flex; align-items: center; gap: 5px; }
-
-/* Buttons */
 .ncard-btn {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 8px 18px; border-radius: 9px;
@@ -3158,8 +2950,17 @@ body.dark-mode .ncard-meta-row strong { color: #c5d0dc; }
 .ncard-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(99,102,241,0.4); }
 .ncard-btn-green { background: linear-gradient(135deg, #059669, #10b981); }
 .ncard-btn-green:hover { box-shadow: 0 6px 16px rgba(16,185,129,0.35); }
+.notif-empty {
+    max-width: 500px; margin: 0 auto;
+    text-align: center; padding: 60px 20px;
+    background: #fff; border-radius: 20px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+}
+.notif-empty i  { font-size: 56px; color: #cbd5e1; margin-bottom: 16px; display: block; }
+.notif-empty h3 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+.notif-empty p  { font-size: 14px; color: #64748b; margin-bottom: 20px; }
 
-/* Dark mode */
+/* Dark mode — notification cards */
 body.dark-mode .ncard              { background: #1a1f2e; border-color: rgba(255,255,255,0.07); }
 body.dark-mode .ncard-unread       { background: #1e1a2e; }
 body.dark-mode .ncard-name         { color: #f1f5f9; }
@@ -3178,509 +2979,151 @@ body.dark-mode .ncard-dot          { border-color: #1a1f2e; }
 body.dark-mode .ncard-status-pending  { background: rgba(251,191,36,0.1);  color: #fbbf24; }
 body.dark-mode .ncard-status-progress { background: rgba(96,165,250,0.1);  color: #60a5fa; }
 body.dark-mode .ncard-status-resolved { background: rgba(74,222,128,0.1);  color: #4ade80; }
-
-
-/* ── Duplicate Report Alert ── */
-.duplicate-alert {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background: #fff8e1;
-    border: 1px solid #f59e0b;
-    border-left: 4px solid #f59e0b;
-    border-radius: 12px;
-    padding: 14px 18px;
-    margin-bottom: 20px;
-    color: #92400e;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.6;
-}
-.duplicate-alert i {
-    font-size: 18px;
-    color: #f59e0b;
-    margin-top: 1px;
-    flex-shrink: 0;
-}
-body.dark-mode .duplicate-alert {
-    background: rgba(245,158,11,0.1);
-    border-color: rgba(245,158,11,0.4);
-    color: #fbbf24;
-}
-
+body.dark-mode .notif-empty        { background: #1c2a38; }
+body.dark-mode .notif-empty i      { color: #334155; }
+body.dark-mode .notif-empty h3     { color: #f1f5f9; }
+body.dark-mode .notif-empty p      { color: #64748b; }
 
 /* ================================================
-   ALIGNMENT FIXES
+   REPORT FORM — CENTERED
    ================================================ */
-
-/* 1. Center the report submit form */
 .report-form-container {
     margin-left: auto;
     margin-right: auto;
 }
 
-/* 2. Center the empty state (No Replies Yet / All Caught Up) */
-.notif-empty {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+/* ================================================
+   DUPLICATE ALERT
+   ================================================ */
+.duplicate-alert {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: #fff8e1; border: 1px solid #f59e0b;
+    border-left: 4px solid #f59e0b; border-radius: 12px;
+    padding: 14px 18px; margin-bottom: 20px;
+    color: #92400e; font-size: 14px; font-weight: 500; line-height: 1.6;
 }
-.notif-empty i {
-    display: block;
-    font-size: 56px;
-    color: #cbd5e1;
-    margin-bottom: 16px;
-}
-.notif-empty h3 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 8px;
-}
-.notif-empty p {
-    font-size: 14px;
-    color: #64748b;
-    margin-bottom: 20px;
-}
-body.dark-mode .notif-empty i  { color: #334155; }
-body.dark-mode .notif-empty h3 { color: #f1f5f9; }
-body.dark-mode .notif-empty p  { color: #64748b; }
+.duplicate-alert i { font-size: 18px; color: #f59e0b; margin-top: 1px; flex-shrink: 0; }
+body.dark-mode .duplicate-alert { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.4); color: #fbbf24; }
 
-/* 3. Fix filter section — status + search aligned inline, centered under stat cards */
+/* ================================================
+   FILTER SECTION — CLEAN SINGLE DEFINITION
+   ================================================ */
 .filter-section {
-    max-width: 100%;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 .filter-form {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
-}
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-}
-.search-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex: 1;
-    min-width: 200px;
-}
-.search-group label {
-    font-weight: 600;
-    color: #333;
-    white-space: nowrap;
-}
-.search-group input[type="text"] {
-    flex: 1;
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-    transition: border-color 0.3s;
-    background: #f8f9fa;
-    color: #333;
-}
-.search-group input[type="text"]:focus {
-    outline: none;
-    border-color: #667eea;
-    background: #fff;
-}
-body.dark-mode .search-group label { color: #c5d0dc; }
-body.dark-mode .search-group input[type="text"] {
-    background: #17232f;
-    border-color: #2e4060;
-    color: #c5d0dc;
-}
-body.dark-mode .search-group input[type="text"]:focus {
-    border-color: #667eea;
-    background: #1c2a38;
-}
-
-
-/* ── Filter section vertical alignment fix ── */
-.filter-section {
-    padding: 14px 20px;
-    margin-bottom: 20px;
-}
-.filter-form {
-    align-items: center;
-    min-height: unset;
-}
-
-
-/* ── Filter inner row — Status + Search centered ── */
-.filter-inner {
-    display: flex;
-    align-items: center;
-    gap: 20px;
     flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-}
-.filter-form {
-    justify-content: center !important;
-}
-
-
-/* ── FINAL: Center Status + Search inside filter box ── */
-.filter-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.filter-form {
-    display: flex !important;
-    flex-direction: row !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 20px !important;
-    flex-wrap: wrap;
-    width: 100%;
 }
 .filter-inner {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
     width: 100%;
 }
 .filter-group {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
-}
-.search-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-}
-.search-group input[type="text"],
-#reportSearch {
-    width: 260px;
-}
-
-
-/* ── Filter box: center everything ── */
-.filter-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.filter-form {
-    display: flex !important;
-    flex-wrap: wrap;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 20px;
-    width: 100%;
-}
-.filter-inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
-}
-.filter-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 .filter-group label {
-    margin: 0;
-    line-height: 1;
-}
-.search-group {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-.search-group label {
-    margin: 0;
-    line-height: 1;
+    font-weight: 600;
+    color: #333;
     white-space: nowrap;
+    flex-shrink: 0;
 }
-
-
-/* ── Force Status + Search side by side, centered ── */
-.filter-section {
-    padding: 16px 20px !important;
+.filter-group select {
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s;
 }
-.filter-form,
-.filter-inner {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 16px !important;
-    width: 100% !important;
-}
-.filter-group,
-.search-group {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 8px !important;
-    flex: 0 1 auto !important;
-    width: auto !important;
-}
-.search-group input[type="text"],
-#reportSearch {
-    width: 280px !important;
-    max-width: 100% !important;
-    flex: none !important;
-}
-
-
-/* ── Reset filter — left aligned, each box centered ── */
-.filter-section {
-    padding: 16px 20px !important;
-}
-.filter-form,
-.filter-inner {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 16px !important;
-    width: 100% !important;
-}
-.filter-group,
-.search-group {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    flex: 0 1 auto !important;
-    width: auto !important;
-}
-.search-group input[type="text"],
-#reportSearch {
-    width: 280px !important;
-    flex: none !important;
-}
-
+.filter-group select:focus { outline: none; border-color: #667eea; }
 
 /* ================================================
-   MOBILE RESPONSIVE — FULL OVERHAUL
+   MOBILE RESPONSIVE — FINAL CLEAN VERSION
    ================================================ */
-
-/* ── Tablet (768px and below) ── */
 @media (max-width: 768px) {
+    .main-content { padding: 70px 16px 30px 16px !important; }
+    .header h1 { font-size: 22px; }
+    .dashboard-cards { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+    .card { padding: 16px !important; }
+    .stats-dashboard { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
 
-  /* Main content — no left padding since sidebar is hidden */
-  .main-content {
-    padding: 70px 16px 30px 16px !important;
-  }
+    /* Filter — stack vertically, each row full width */
+    .filter-section { padding: 14px 16px !important; }
+    .filter-form,
+    .filter-inner {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+    .filter-group {
+        width: 100% !important;
+        flex-shrink: unset !important;
+    }
+    .filter-group select { width: 100% !important; }
 
-  /* Header */
-  .header h1 { font-size: 22px; }
-  .header p.subtitle { font-size: 13px; }
+    /* Notification cards */
+    .ncard-head { flex-wrap: wrap; }
+    .ncard-head-right {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 6px;
+        width: 100%;
+    }
+    .ncard-meta-row { flex-direction: column; gap: 6px; }
+    .ncard-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
+    .ncard-btn { width: 100%; justify-content: center; }
 
-  /* Dashboard cards — 2 columns */
-  .dashboard-cards {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-  }
-  .card { padding: 16px !important; }
-  .card-icon { width: 44px !important; height: 44px !important; font-size: 18px !important; }
-  .card-number { font-size: 24px !important; }
+    /* Report form */
+    .report-form-container { padding: 20px 16px !important; }
+    .form-actions { flex-direction: column !important; gap: 10px !important; }
+    .btn-submit, .btn-reset { width: 100% !important; justify-content: center !important; }
 
-  /* Stat cards (admin view reports) — 2 columns */
-  .stats-dashboard {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-  }
+    /* Report cards */
+    .report-header { flex-direction: column !important; align-items: flex-start !important; gap: 8px !important; }
+    .report-footer { flex-direction: column !important; gap: 4px !important; }
 
-  /* Notification cards */
-  .notif-page-wrap { padding: 0 0 30px; }
-  .ncard-head { flex-wrap: wrap; gap: 10px; }
-  .ncard-head-right {
-    flex-direction: row !important;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 6px;
-    width: 100%;
-  }
-  .ncard-time { font-size: 11px; }
-  .ncard-meta-row { flex-direction: column; gap: 6px; }
-  .ncard-footer { flex-direction: column; gap: 10px; align-items: flex-start; }
-  .ncard-btn { width: 100%; justify-content: center; }
+    /* Admin report cards */
+    .priority-controls { flex-direction: column !important; gap: 8px !important; }
+    .btn-analyze, .priority-select { width: 100% !important; }
 
-  /* Report form */
-  .report-form-container {
-    padding: 20px 16px !important;
-    border-radius: 12px !important;
-  }
-  .form-actions {
-    flex-direction: column !important;
-    gap: 10px !important;
-  }
-  .btn-submit, .btn-reset {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  /* Filter section */
-  .filter-section { padding: 14px 16px !important; }
-  .filter-form,
-  .filter-inner {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 12px !important;
-  }
-  .filter-group,
-  .search-group {
-    width: 100% !important;
-  }
-  .filter-group select,
-  .search-group input[type="text"],
-  #reportSearch {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  /* Report cards (view_reports) */
-  .report-card { padding: 16px !important; }
-  .report-header {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 8px !important;
-  }
-  .report-header h3 { font-size: 15px !important; }
-  .status-badge { align-self: flex-start; }
-  .report-footer {
-    flex-direction: column !important;
-    gap: 4px !important;
-  }
-
-  /* Admin view reports cards */
-  .report-card.admin-report .report-header {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-  .report-card.admin-report .header-right {
-    width: 100% !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-  }
-  .priority-controls {
-    flex-direction: column !important;
-    gap: 8px !important;
-  }
-  .btn-analyze, .priority-select { width: 100% !important; }
-  .reply-form { padding: 14px !important; }
-  .reply-form textarea { min-height: 100px !important; }
-
-  /* Empty state */
-  .notif-empty { padding: 40px 16px !important; }
-  .empty-state { padding: 40px 16px !important; }
-
-  /* Alerts section */
-  .alerts-section { padding: 16px !important; }
-  .alerts-container {
-    grid-template-columns: 1fr !important;
-  }
-  .alert-header { flex-direction: column; gap: 8px; }
-  .alert-actions { width: 100%; }
-  .btn-view { width: 100%; justify-content: center; }
-
-  /* Manage users table */
-  .users-table-container { overflow-x: auto; }
-  .users-table { min-width: 600px; }
-
-  /* Login page */
-  .login-container { flex-direction: column !important; }
-  .branding-side { padding: 30px 20px !important; min-height: auto !important; }
-  .forms-side { padding: 30px 20px !important; }
-  .logo-section h1 { font-size: 24px !important; }
-  .logo-section i { font-size: 48px !important; }
+    /* Login */
+    .login-container { flex-direction: column !important; }
+    .branding-side { padding: 30px 20px !important; }
+    .forms-side { padding: 30px 20px !important; }
 }
 
-/* ── Mobile (480px and below) ── */
 @media (max-width: 480px) {
-
-  .main-content {
-    padding: 65px 12px 24px 12px !important;
-  }
-
-  /* Dashboard cards — 1 column on very small screens */
-  .dashboard-cards {
-    grid-template-columns: 1fr !important;
-  }
-  .stats-dashboard {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  /* Header */
-  .header { margin-bottom: 20px !important; }
-  .header h1 { font-size: 20px !important; }
-
-  /* Notification card badges — stack them */
-  .ncard-badge,
-  .ncard-status-pending,
-  .ncard-status-progress,
-  .ncard-status-resolved {
-    font-size: 9px !important;
-    padding: 3px 8px !important;
-  }
-  .ncard-inner { padding: 14px 14px 16px !important; }
-  .ncard-name { font-size: 13px !important; }
-  .ncard-report-title { font-size: 13px !important; }
-  .ncard-report-body { font-size: 12px !important; }
-  .ncard-section { padding: 10px 12px !important; }
-  .ncard-meta-row { padding: 8px 10px !important; font-size: 10px !important; }
-  .ncard-btn {
-    padding: 10px 14px !important;
-    font-size: 12px !important;
-  }
-
-  /* Menu button positioning */
-  .menu-btn {
-    top: 12px !important;
-    left: 12px !important;
-    width: 38px !important;
-    height: 38px !important;
-  }
-
-  /* Form */
-  .report-form-container { padding: 16px 12px !important; }
-  .report-form input[type="text"],
-  .report-form textarea {
-    font-size: 14px !important;
-    padding: 12px !important;
-  }
-
-  /* Priority stat cards */
-  .stat-card { padding: 12px !important; }
-  .stat-card .stat-icon { width: 36px !important; height: 36px !important; font-size: 16px !important; }
-  .stat-number { font-size: 22px !important; }
-  .stat-label { font-size: 10px !important; }
-
-  /* Duplicate alert */
-  .duplicate-alert { font-size: 13px !important; padding: 12px 14px !important; }
+    .main-content { padding: 65px 12px 24px 12px !important; }
+    .header h1 { font-size: 20px !important; }
+    .header { margin-bottom: 20px !important; }
+    .dashboard-cards { grid-template-columns: 1fr !important; }
+    .ncard-inner { padding: 14px 14px 16px !important; }
+    .ncard-badge, .ncard-status-pending,
+    .ncard-status-progress, .ncard-status-resolved { font-size: 9px !important; padding: 3px 8px !important; }
+    .duplicate-alert { font-size: 13px !important; padding: 12px 14px !important; }
+    .menu-btn { top: 12px !important; left: 12px !important; }
 }
 
-/* ── Very small screens (360px and below) ── */
 @media (max-width: 360px) {
-  .main-content { padding: 60px 10px 20px 10px !important; }
-  .header h1 { font-size: 18px !important; }
-  .ncard-inner { padding: 12px !important; }
-  .ncard-head { gap: 8px; }
-  .ncard-avatar { width: 36px !important; height: 36px !important; font-size: 14px !important; }
+    .main-content { padding: 60px 10px 20px 10px !important; }
+    .header h1 { font-size: 18px !important; }
+    .ncard-avatar { width: 36px !important; height: 36px !important; font-size: 14px !important; }
 }
