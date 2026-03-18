@@ -103,7 +103,7 @@ $priority_reports = $conn->query("
             </div>
             <div class="card-info">
                 <h3>Notifications</h3>
-                <p class="card-number"><?= $notifications; ?></p>
+                <p class="card-number" id="dashNotifCount"><?= $notifications; ?></p>
             </div>
         </div>
         
@@ -165,6 +165,15 @@ $priority_reports = $conn->query("
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+// If admin visited notifications page, clear the dashboard count
+if (sessionStorage.getItem('admin_notif_cleared') === '1') {
+    var el = document.getElementById('dashNotifCount');
+    if (el) el.textContent = '0';
+    sessionStorage.removeItem('admin_notif_cleared');
+}
+</script>
     
 </body>
 </html>

@@ -22,37 +22,59 @@ $nlp_service = new NLPService($conn);
 
 // Handle report submission
 if (isset($_POST['submit_report'])) {
-    $user_name = $_SESSION['name'];
-    $user_email = $_SESSION['email'];
-    $report_title = $conn->real_escape_string($_POST['report_title']);
+    $user_name    = $_SESSION['name'];
+    $user_email   = $_SESSION['email'];
+    $report_title   = $conn->real_escape_string($_POST['report_title']);
     $report_content = $conn->real_escape_string($_POST['report_content']);
-    
+
     // Get user_id from users table
     $user_result = $conn->query("SELECT id FROM users WHERE email = '$user_email'");
-    $user_data = $user_result->fetch_assoc();
-    $user_id = $user_data['id'];
-    
-    // Analyze report priority using NLP
-    $analysis = $nlp_service->analyzeReport($_POST['report_title'] . ' ' . $_POST['report_content']);
-    $category = $analysis['category'] ?? 'normal';
-    $priority = $analysis['priority'] ?? 'medium';
-    $confidence = $analysis['priority_confidence'] ?? 0.5;
-    
-    $sql = "INSERT INTO reports (user_id, user_name, user_email, report_title, report_content, category, priority, priority_confidence, status) 
-            VALUES ('$user_id', '$user_name', '$user_email', '$report_title', '$report_content', '$category', '$priority', '$confidence', 'pending')";
-    
-    if ($conn->query($sql)) {
-        $report_id = $conn->insert_id;
-        
-        // Log the priority analysis
-        $log_sql = "INSERT INTO priority_logs (report_id, new_priority, confidence_score, analysis_method) 
-                    VALUES ($report_id, '$priority', $confidence, 'nlp_auto')";
-        $conn->query($log_sql);
-        
-        $success_message = "Report submitted successfully! (AI Priority: " . strtoupper($priority) . ")";
+    $user_data   = $user_result->fetch_assoc();
+    $user_id     = $user_data['id'];
+
+    // ── Duplicate check ──────────────────────────────────────────────────────
+    // Block submission if the user already has an active (non-resolved) report
+    // with the exact same title.
+    $dup_check = $conn->query("
+        SELECT id, status FROM reports
+        WHERE user_email = '$user_email'
+          AND report_title = '$report_title'
+          AND status != 'resolved'
+        LIMIT 1
+    ");
+
+    if ($dup_check && $dup_check->num_rows > 0) {
+        $dup = $dup_check->fetch_assoc();
+        $error_message = "Duplicate report detected! You already have an active report with this title "
+                       . "(ID #" . $dup['id'] . ", Status: " . ucfirst($dup['status']) . "). "
+                       . "Please wait for it to be resolved before submitting again.";
+
     } else {
-        $error_message = "Error submitting report. Please try again.";
-    }
+        // ── No duplicate — proceed ───────────────────────────────────────────
+
+        // Analyze report priority using NLP
+        $analysis   = $nlp_service->analyzeReport($_POST['report_title'] . ' ' . $_POST['report_content']);
+        $category   = $analysis['category']           ?? 'normal';
+        $priority   = $analysis['priority']           ?? 'medium';
+        $confidence = $analysis['priority_confidence'] ?? 0.5;
+
+        $sql = "INSERT INTO reports (user_id, user_name, user_email, report_title, report_content, category, priority, priority_confidence, status)
+                VALUES ('$user_id', '$user_name', '$user_email', '$report_title', '$report_content', '$category', '$priority', '$confidence', 'pending')";
+
+        if ($conn->query($sql)) {
+            $report_id = $conn->insert_id;
+
+            // Log the priority analysis
+            $log_sql = "INSERT INTO priority_logs (report_id, new_priority, confidence_score, analysis_method)
+                        VALUES ($report_id, '$priority', $confidence, 'nlp_auto')";
+            $conn->query($log_sql);
+
+            $success_message = "Report submitted successfully! (AI Priority: " . strtoupper($priority) . ")";
+        } else {
+            $error_message = "Error submitting report. Please try again.";
+        }
+
+    } // end duplicate check
 }
 
 ?>
@@ -84,8 +106,8 @@ if (isset($_POST['submit_report'])) {
     <?php endif; ?>
     
     <?php if (isset($error_message)): ?>
-        <div class="error-alert">
-            <i class="fa-solid fa-circle-exclamation"></i>
+        <div class="error-alert duplicate-alert">
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <?= $error_message; ?>
         </div>
     <?php endif; ?>
@@ -96,7 +118,8 @@ if (isset($_POST['submit_report'])) {
                 <label for="report_title">
                     <i class="fa-solid fa-heading"></i> Report Title
                 </label>
-                <input type="text" id="report_title" name="report_title" 
+                <input type="text" id="report_title" name="report_title"
+                       value="<?= isset($_POST['report_title']) ? htmlspecialchars($_POST['report_title']) : ''; ?>"
                        placeholder="Enter report title" required>
             </div>
             
@@ -104,9 +127,9 @@ if (isset($_POST['submit_report'])) {
                 <label for="report_content">
                     <i class="fa-solid fa-file-lines"></i> Report Content
                 </label>
-                <textarea id="report_content" name="report_content" 
-                          placeholder="Compose your report here..." 
-                          rows="12" required></textarea>
+                <textarea id="report_content" name="report_content"
+                          placeholder="Compose your report here..."
+                          rows="12" required><?= isset($_POST['report_content']) ? htmlspecialchars($_POST['report_content']) : ''; ?></textarea>
             </div>
             
             <div class="form-actions">

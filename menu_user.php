@@ -39,8 +39,11 @@ if (!isset($active_page)) $active_page = '';
             </a>
         </li>
         <li>
-            <a href="notifications_user.php" <?= $active_page === 'notifications' ? 'class="active"' : ''; ?> >
-                <span class="icon"><i class="fa-solid fa-bell"></i></span>
+            <a href="notifications_user.php" <?= $active_page === 'notifications' ? 'class="active"' : ''; ?>>
+                <span class="icon notif-bell-wrap">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notif-badge" id="userNotifBadge" style="display:none;"></span>
+                </span>
                 <span class="text">Notifications</span>
             </a>
         </li>
@@ -140,4 +143,22 @@ function toggleDarkMode(checkbox) {
         }
     }
 })();
+
+// Fetch and show user notification badge
+function fetchUserNotifCount() {
+    fetch('notification_api.php?action=get_count')
+        .then(r => r.json())
+        .then(data => {
+            var badge = document.getElementById('userNotifBadge');
+            if (!badge) return;
+            if (data.success && data.count > 0) {
+                badge.textContent = data.count > 99 ? '99+' : data.count;
+                badge.style.display = 'flex';
+            } else {
+                badge.style.display = 'none';
+            }
+        }).catch(() => {});
+}
+fetchUserNotifCount();
+setInterval(fetchUserNotifCount, 15000);
 </script>

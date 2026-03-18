@@ -261,8 +261,8 @@
             
             <!-- Filters -->
             <div class="filter-section">
-                <form method="GET" class="filter-form" style="justify-content: space-between;">
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap; align-items: center;">
+                <form method="GET" class="filter-form">
+                    <div class="filter-inner">
                         <div class="filter-group">
                             <label>Status:</label>
                             <select name="status" onchange="this.form.submit()">

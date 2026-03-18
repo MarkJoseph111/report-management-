@@ -79,7 +79,7 @@ $notifications_list = $conn->query("SELECT un.*, r.report_title FROM user_notifi
             </div>
             <div class="card-info">
                 <h3>Notifications</h3>
-                <p class="card-number"><?= $notifications; ?></p>
+                <p class="card-number" id="dashNotifCount"><?= $notifications; ?></p>
             </div>
         </div>
         
@@ -137,3 +137,14 @@ $notifications_list = $conn->query("SELECT un.*, r.report_title FROM user_notifi
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+// If user visited notifications page, clear the dashboard count
+if (sessionStorage.getItem('user_notif_cleared') === '1') {
+    var el = document.getElementById('dashNotifCount');
+    if (el) el.textContent = '0';
+    sessionStorage.removeItem('user_notif_cleared');
+}
+</script>
+</body>
+</html>
