@@ -1,15 +1,15 @@
 /* Search Bar Styles */
 .search-group {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .search-group label {
-  font-weight: 500;
-  color: #6b7280;
+  font-weight: 600;
+  color: #333;
   font-size: 14px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -18,36 +18,32 @@
 #reportSearch {
   flex: 1;
   min-width: 0;
-  width: 100%;
-  padding: 10px 16px;
+  width: 220px;
+  padding: 8px 14px;
   border: 2px solid #d1d5db;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 14px;
   background: #ffffff;
   transition: all 0.3s ease;
-  height: 44px;
+  height: 40px;
   color: #1f2937;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   font-family: "Poppins", sans-serif;
 }
 
 #reportSearch:hover { border-color: #667eea; }
-
 #reportSearch:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
   outline: none;
   background: #fafbff;
 }
-
 #reportSearch::placeholder { color: #9ca3af; }
 
-/* Dark mode */
+body.dark-mode .search-group label { color: #c5d0dc; }
 body.dark-mode #reportSearch {
   background: #1c2a38;
   border-color: #2e4060;
   color: #c5d0dc;
-  box-shadow: none;
 }
 body.dark-mode #reportSearch:hover { border-color: #667eea; }
 body.dark-mode #reportSearch:focus {
@@ -56,60 +52,42 @@ body.dark-mode #reportSearch:focus {
   background: #17232f;
 }
 body.dark-mode #reportSearch::placeholder { color: #4a6278; }
-body.dark-mode .search-group label { color: #8395a7; }
 
-/* Mobile */
+/* ── MOBILE: stack rows, label stays beside its box ── */
 @media (max-width: 768px) {
-  .filter-section { padding: 14px 16px; }
-
   .filter-form,
   .filter-inner {
-    display: flex !important;
     flex-direction: column !important;
+    align-items: flex-start !important;
     gap: 10px !important;
     width: 100% !important;
   }
-
   .filter-group {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 8px !important;
     width: 100% !important;
   }
-
   .filter-group label {
-    flex-shrink: 0;
-    white-space: nowrap;
+    min-width: 60px !important;
+    flex-shrink: 0 !important;
   }
-
   .filter-group select {
     flex: 1 !important;
-    width: 100% !important;
     min-width: 0 !important;
-  }
-
-  .search-group {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 8px !important;
     width: 100% !important;
-    flex: unset !important;
   }
-
+  .search-group {
+    width: 100% !important;
+    flex-shrink: unset !important;
+  }
   .search-group label {
-    flex-shrink: 0;
-    white-space: nowrap;
+    min-width: 60px !important;
+    flex-shrink: 0 !important;
   }
-
   #reportSearch {
     flex: 1 !important;
     min-width: 0 !important;
     width: 0 !important;
     max-width: 100% !important;
+    height: 40px !important;
     font-size: 13px !important;
-    padding: 9px 12px !important;
-    height: 42px !important;
   }
 }

@@ -262,19 +262,19 @@
             <!-- Filters -->
             <div class="filter-section">
                 <form method="GET" class="filter-form">
-                    <div class="filter-inner">
-                        <div class="filter-group">
-                            <label>Status:</label>
-                            <select name="status" onchange="this.form.submit()">
+                    <div class="filter-inner" style="display:flex; flex-direction:row; align-items:center; gap:20px;">
+                        <div class="filter-group" style="display:flex; flex-direction:row; align-items:center; gap:8px;">
+                            <label style="margin:0; line-height:1; vertical-align:middle;">Status:</label>
+                            <select name="status" onchange="this.form.submit()" style="vertical-align:middle; margin:0;">
                                 <option value="all" <?= $status_filter === 'all' ? 'selected' : ''; ?>>All Status</option>
                                 <option value="pending" <?= $status_filter === 'pending' ? 'selected' : ''; ?>>Pending</option>
                                 <option value="in-progress" <?= $status_filter === 'in-progress' ? 'selected' : ''; ?>>In Progress</option>
                                 <option value="resolved" <?= $status_filter === 'resolved' ? 'selected' : ''; ?>>Resolved</option>
                             </select>
                         </div>
-                        <div class="search-group">
-                            <label>Search:</label>
-                            <input type="text" id="reportSearch" placeholder="Search by title, content, user name/email...">
+                        <div class="search-group" style="display:flex; flex-direction:row; align-items:center; gap:8px;">
+                            <label style="margin:0; line-height:1; vertical-align:middle;">Search:</label>
+                            <input type="text" id="reportSearch" placeholder="Search by title, content, user name/email..." style="vertical-align:middle; margin:0;">
                         </div>
                     </div>
                     <?php if ($priority_filter !== 'all'): ?>

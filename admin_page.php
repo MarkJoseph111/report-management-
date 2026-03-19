@@ -25,7 +25,7 @@ $reports_result = $conn->query("SELECT COUNT(*) as total FROM reports");
 $total_reports = $reports_result->fetch_assoc()['total'];
 
 // Notifications = reports with NO admin reply yet (new/unanswered)
-$notif_result = $conn->query("SELECT COUNT(*) as total FROM reports WHERE admin_reply IS NULL OR admin_reply = ''");
+$notif_result = $conn->query("SELECT COUNT(*) as total FROM reports WHERE (admin_reply IS NULL OR admin_reply = '') AND admin_notif_seen = 0");
 $notifications = $notif_result->fetch_assoc()['total'];
 
 // Resolved = reports that have an admin reply

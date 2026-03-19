@@ -70,19 +70,19 @@ $conn->query("UPDATE user_notifications SET is_read = 1 WHERE user_id = $user_id
     
     <!-- Filters -->
     <div class="filter-section">
-        <form method="GET" class="filter-form">
-            <div class="filter-group">
-                <label>Status:</label>
-                <select name="status" onchange="this.form.submit()">
+        <form method="GET" class="filter-form" style="display:flex; flex-direction:row; align-items:center; gap:20px;">
+            <div class="filter-group" style="display:flex; flex-direction:row; align-items:center; gap:8px;">
+                <label style="margin:0; line-height:1; vertical-align:middle;">Status:</label>
+                <select name="status" onchange="this.form.submit()" style="vertical-align:middle; margin:0;">
                     <option value="all" <?= $status_filter === 'all' ? 'selected' : ''; ?>>All Status</option>
                     <option value="pending" <?= $status_filter === 'pending' ? 'selected' : ''; ?>>Pending</option>
                     <option value="in-progress" <?= $status_filter === 'in-progress' ? 'selected' : ''; ?>>In Progress</option>
                     <option value="resolved" <?= $status_filter === 'resolved' ? 'selected' : ''; ?>>Resolved</option>
                 </select>
             </div>
-            <div class="search-group">
-                <label>Search:</label>
-                <input type="text" id="reportSearch" placeholder="Search reports by title or content...">
+            <div class="search-group" style="display:flex; flex-direction:row; align-items:center; gap:8px;">
+                <label style="margin:0; line-height:1; vertical-align:middle;">Search:</label>
+                <input type="text" id="reportSearch" placeholder="Search reports by title or content..." style="vertical-align:middle; margin:0;">
             </div>
         </form>
     </div>

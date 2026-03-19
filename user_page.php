@@ -27,7 +27,7 @@ $total_result = $conn->query("SELECT COUNT(*) as total FROM reports WHERE user_e
 $total_reports = $total_result->fetch_assoc()['total'];
 
 // Notifications = unread user notifications
-$notif_result = $conn->query("SELECT COUNT(*) as total FROM user_notifications WHERE user_id = $user_id AND is_read = FALSE");
+$notif_result = $conn->query("SELECT COUNT(*) as total FROM reports WHERE user_email = '$user_email' AND admin_reply IS NOT NULL AND admin_reply != '' AND user_notif_seen = 0");
 $notifications = $notif_result->fetch_assoc()['total'];
 
 // Completed = reports that have an admin reply

@@ -35,6 +35,7 @@ $reports = $conn->query("
     WHERE user_email = '" . $conn->real_escape_string($user_email) . "'
       AND admin_reply IS NOT NULL
       AND admin_reply != ''
+      AND (user_notif_seen IS NULL OR user_notif_seen = 0)
     ORDER BY replied_at DESC
 ");
 
@@ -147,7 +148,7 @@ $reports = $conn->query("
               <span class="ncard-footer-left">
                 <i class="fa-solid fa-hashtag"></i> Report #<?= $r['id']; ?>
               </span>
-              <a href="view_reports.php?seen=<?= $r['id']; ?>#report-<?= $r['id']; ?>" class="ncard-btn ncard-btn-green">
+              <a href="view_reports.php?seen=<?= $r['id']; ?>#report-<?= $r['id']; ?>" class="ncard-btn ncard-btn-green" data-report-id="<?= $r['id']; ?>" onclick="removeNotifCard(this, event)">
                 <i class="fa-solid fa-eye"></i> View Full Report
               </a>
             </div>
@@ -169,6 +170,40 @@ $reports = $conn->query("
 </div>
 
 <script>
+function removeNotifCard(btn, event) {
+    event.preventDefault();
+    var href = btn.getAttribute('href');
+    var reportId = btn.getAttribute('data-report-id');
+    var card = btn.closest('.ncard');
+
+    // Mark as seen in DB
+    fetch('notifications_user.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'action=mark_seen&report_id=' + reportId
+    }).catch(() => {});
+
+    // Remove card from DOM
+    if (card) {
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(40px)';
+        setTimeout(function() {
+            card.remove();
+            var remaining = document.querySelectorAll('.ncard');
+            if (remaining.length === 0) {
+                var list = document.querySelector('.notif-list');
+                if (list) {
+                    list.innerHTML = '<div class="notif-empty"><i class="fa-solid fa-bell-slash"></i><h3>No Replies Yet</h3><p>You\'ll be notified here when an admin replies to your report.</p><a href="submit_reports.php" class="btn-primary"><i class="fa-solid fa-plus"></i> Submit a Report</a></div>';
+                }
+            }
+            window.location.href = href;
+        }, 350);
+    } else {
+        window.location.href = href;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch('notification_api.php', {
         method: 'POST',
