@@ -22,9 +22,20 @@ if (isset($_POST['action']) && $_POST['action'] === 'mark_seen' && isset($_POST[
     exit();
 }
 
+if (isset($_POST['action']) && $_POST['action'] === 'dismiss_notif' && isset($_POST['report_id'])) {
+    $report_id = intval($_POST['report_id']);
+    if ($conn->query("UPDATE reports SET admin_notif_dismissed = 1 WHERE id = $report_id")) {
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false]);
+    }
+    exit();
+}
+
 $reports = $conn->query("
     SELECT * FROM reports
-    WHERE admin_reply IS NULL OR admin_reply = ''
+    WHERE (admin_reply IS NULL OR admin_reply = '')
+      AND (admin_notif_dismissed IS NULL OR admin_notif_dismissed = 0)
     ORDER BY created_at DESC
 ");
 
@@ -113,7 +124,8 @@ $reports = $conn->query("
                 <i class="fa-solid fa-calendar-plus"></i>
                 Submitted <?= date('M d, Y', strtotime($r['created_at'])); ?>
               </span>
-              <a href="admin_view_reports.php#report-<?= $r['id']; ?>" class="ncard-btn">
+              <a href="admin_view_reports.php#report-<?= $r['id']; ?>" class="ncard-btn"
+                 onclick="replyNow(event, this, <?= $r['id']; ?>)">
                 <i class="fa-solid fa-reply"></i> Reply Now
               </a>
             </div>
@@ -132,6 +144,30 @@ $reports = $conn->query("
 </div>
 
 <script>
+function replyNow(event, btn, reportId) {
+    event.preventDefault();
+    var card = btn.closest('.ncard');
+    var dest = btn.getAttribute('href');
+    fetch('notifications_admin.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'action=dismiss_notif&report_id=' + reportId
+    }).catch(() => {});
+    if (card) {
+        card.style.transition = 'opacity 0.3s ease';
+        card.style.opacity = '0';
+        setTimeout(function() {
+            card.remove();
+            if (document.querySelectorAll('.ncard').length === 0) {
+                document.querySelector('.notif-list').innerHTML = '<div class="notif-empty"><i class="fa-solid fa-bell-slash"></i><h3>All Caught Up!</h3><p>No new reports waiting for a reply.</p></div>';
+            }
+            window.location.href = dest;
+        }, 300);
+    } else {
+        window.location.href = dest;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     fetch('notification_api.php', {
         method: 'POST',
